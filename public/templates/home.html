@@ -1,3 +1,21 @@
-<div>
-	<p>{{homeTest}}</p>
+<h1>Newest</h1>
+
+<div class="row" ng-if="dataNew.data.length > 0">
+	<div class="col-md-3 col-sm-4" ng-repeat="palette in dataNew.data">
+		<div class="thumbnail">
+			<p>{{palette.userName}}</p>
+			<div class="paletteDiv" ng-repeat="color in palette.colors">
+				<div class="colorDiv" style="width: 20%; height:20px; background-color: #{{color}}"></div>
+			</div>
+		</div>
+	</div>
 </div>
+
+<!-- <div ng-repeat = "palette in dataNew.data">
+	<p>{{palette}}</p>
+</div>
+
+<h1>Top</h1>
+<div ng-repeat = "palette in dataTop.data">
+	<p>{{palette}}</p>
+</div> -->

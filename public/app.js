@@ -1,11 +1,5 @@
-var app = angular.module('colorloverApp', ['ngResource', 'ngRoute']);
-// app.factory('Palette', ['$resource', function($resource) {
-//   return $resource("/api/palettes", {
-//     query: {
-//       isArray: true
-//     }
-//   });
-// }]);
+var app = angular.module('colorloverApp', ['ngRoute']);
+
 app.config(['$routeProvider', '$locationProvider',
   function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -24,10 +18,18 @@ app.config(['$routeProvider', '$locationProvider',
   }
 ]);
 
-app.controller('MainCtrl', ['$scope', function ($scope) {
-	// var i = Palette.query();
+app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+
 }]);
-app.controller('HomeCtrl', ['$scope', function ($scope) {
+app.controller('HomeCtrl', ['$scope', '$http', '$timeout',  function ($scope, $http, $timeout) {
   $scope.homeTest = "Welcome to the homepage!";
+  $http.get('/api/new').then(function (response){
+    console.log(response);
+    $scope.dataNew = response;
+  });
+ $http.get('/api/top').then(function (response){
+    console.log(response);
+    $scope.dataTop = response;
+  });
 }]);
 

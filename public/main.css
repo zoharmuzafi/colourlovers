@@ -1,0 +1,10 @@
+.paletteDiv{
+	width: 100%;
+	height: 20px;	
+	padding:0;
+	
+
+}
+.colorDiv{
+	display:inline-block;
+}
