@@ -22,5 +22,5 @@ Installation: clone the repository and make sure the package.json contains the f
 When you run the server the app should be accesibale in http://localhost:3000/ and you should be able to see console log of "server started" in your server console.
 
 
-Link to heroku: 
+Link to heroku: https://palettesapp.herokuapp.com
 
