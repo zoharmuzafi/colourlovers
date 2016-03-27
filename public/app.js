@@ -65,6 +65,24 @@ app.directive("viewsAndLikes", function() {
     };
 });
 
+app.directive('scrollOnClick', function() {
+  return {
+    restrict: 'A',
+    link: function($scope, $elm, attrs) {
+      var idToScroll = attrs.href;
+      $elm.on('click', function() {
+        var $target;
+        if (idToScroll) {
+          $target = $(idToScroll);
+        } else {
+          $target = $elm;
+        }
+        $("body").animate({scrollTop: $target.offset().top}, "slow");
+      });
+    }
+  };
+});
+
 //main controler not in use at the moment since there is only one page
 app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 

@@ -1,8 +1,7 @@
 <!-- homepage template -->
-
 <!-- new section -->
-<h1>Newest&nbsp&nbsp({{dataNew.length}})</h1><br><br>
-<div class="row" ng-if="dataNew.length > 0">
+<h1 id="newTitle">Newest palettes&nbsp&nbsp({{dataNew.length}})</h1><br><br>
+<div class="row" ng-if="dataNew.length>0">
 	<div class="col-md-3 col-sm-4" ng-repeat="palette in dataNew">
 		<div class="thumbnail text-left">
 			<palette-info></palette-info>		
@@ -18,8 +17,8 @@
 
 
 <!-- top section -->
-<h1>Top&nbsp&nbsp({{dataTop.length}})</h1><br><br>
-<div class="row" ng-if="dataTop.length > 0">
+<h1 id="topTitle">Top palettes&nbsp&nbsp({{dataTop.length}})</h1><br><br>
+<div class="row" ng-if="dataTop.length>0" id="topDiv">
 	<div class="col-md-3 col-sm-4" ng-repeat="palette in dataTop">
 		<div class="thumbnail text-left">
 			<palette-info></palette-info>	
