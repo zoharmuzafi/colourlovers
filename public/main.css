@@ -20,7 +20,7 @@
 
 .thumbnail{
 	height: 350px;
-	margin-top: 5% !important;
+	margin-top: 5%;
 	transition: width 1s, height 1s;
 	width: 90%;
 }

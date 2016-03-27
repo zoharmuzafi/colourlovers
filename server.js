@@ -27,7 +27,6 @@ app.get('/api/new', function (req, res) {
   if(queryAsObject.hueOption){
     urlToSend = urlToSend + '&hueOption=' + queryAsObject.hueOption;
   }
-  console.log(urlToSend);
   request(urlToSend, function(error, response, body){
   var dataNew = JSON.parse(body);
   res.json(dataNew); 
@@ -42,7 +41,6 @@ app.get('/api/top', function (req, res) {
   if(queryAsObject.hueOption){
     urlToSend = urlToSend + '&hueOption=' + queryAsObject.hueOption;
   }
-  console.log(urlToSend);
   request(urlToSend, function(error, response, body){
   var dataTop = JSON.parse(body);
   res.json(dataTop); 

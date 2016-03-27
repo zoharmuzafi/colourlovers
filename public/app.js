@@ -116,10 +116,6 @@ app.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
           urlTop = urlStr.substring(0, urlStr.length - 1);
         }
     }
-      
-
-    console.log("new : " + urlNew);
-    console.log("top : " + urlTop);
 
     $http.get(urlNew).then(function (response){
       $scope.dataNew = generateArrayOfPallets(response);
