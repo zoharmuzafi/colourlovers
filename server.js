@@ -5,21 +5,22 @@ var express = require('express'),
     url = require("url");
     hbs = require('hbs');
 
-// configure bodyParser (for receiving form data)
+// Configs bodyParser (for receiving form data)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// serve static files from public folder
+// Serves static files from public folder
 app.use(express.static(__dirname + '/public'));
 
-// set view engine to hbs (handlebars)
+// Set view engine to hbs (handlebars)
 app.set('view engine', 'hbs');
 
+//listens to external port or 3000
 app.listen(process.env.PORT ||3000, function() {
   console.log('server started');
 });
 
-//call to the colourlover api - new
+//Calls the colourlover api - new
 app.get('/api/new', function (req, res) {
   var parsedUrl = url.parse(req.url, true); 
   var queryAsObject = parsedUrl.query;
@@ -33,7 +34,7 @@ app.get('/api/new', function (req, res) {
   });
 });
 
-//call to the colourlover api - top
+//Call to the colourlover api - top
 app.get('/api/top', function (req, res) {
   var parsedUrl = url.parse(req.url, true); 
   var queryAsObject = parsedUrl.query;
@@ -47,7 +48,7 @@ app.get('/api/top', function (req, res) {
   });
 });
 
-// catch all routes angular
+// Catch all routes angular
 app.get('*', function (req, res) {
   res.render('index');
 });
