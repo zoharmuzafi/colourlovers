@@ -13,10 +13,11 @@ Custom directives: I created few directive which generate the data for each pale
 Technologies: Angular.js, Node.js, Express, JavaScript, body-parser, handelbars, bootstrap, request.
 
 To install clone the repository and make sure the package.json contain the following dependencies:
-* "body-parser": "^1.15.0",
-* "express": "^4.13.4",
-*  "node": "0.0.0",
-*  "request": "^2.69.0",
+* "body-parser": "^1.15.0"
+* "express": "^4.13.4"
+* "hbs": "^4.0.0",
+*  "node": "0.0.0"
+*  "request": "^2.69.0"
 *  "url": "^0.11.0"
 
 
