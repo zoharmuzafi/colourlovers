@@ -1,4 +1,16 @@
 <!-- homepage template -->
+
+<!-- filter form -->
+<div class="text-left">
+	<h3>Filter:</h3>
+	<form class = "form-inlind " ng-submit="filter()">
+		    <label ng-repeat="hue in hues">
+		    	&nbsp&nbsp<input type="checkbox" ng-model="hue.selected" ng-true-value="true" ng-false-value="false">{{(hue.name)}}&nbsp&nbsp
+		    </label><br><br>
+	    <input type="submit" value="submit" class="btn btn-primary"><br>
+	</form>
+
+</div>
 <!-- new section -->
 <h1 id="newTitle">Newest palettes&nbsp&nbsp({{dataNew.length}})</h1><br><br>
 <div class="row" ng-if="dataNew.length>0">

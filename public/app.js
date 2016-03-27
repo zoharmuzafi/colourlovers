@@ -65,6 +65,7 @@ app.directive("viewsAndLikes", function() {
     };
 });
 
+//directive for scroll down effect
 app.directive('scrollOnClick', function() {
   return {
     restrict: 'A',
@@ -83,17 +84,63 @@ app.directive('scrollOnClick', function() {
   };
 });
 
-//main controler not in use at the moment since there is only one page
+//main controller not in use at the moment since there is only one page
 app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 
 }]);
 
+//home controller - control on all the page
 app.controller('HomeCtrl', ['$scope', '$http', function ($scope, $http) {
-  $http.get('/api/new').then(function (response){
-    $scope.dataNew = generateArrayOfPallets(response);
-  });
 
- $http.get('/api/top').then(function (response){
-    $scope.dataTop = generateArrayOfPallets(response);
-  });
+  // Array of hues for the filter function
+  $scope.hues = [{name: 'all', selected:false}, {name: 'red', selected:false}, {name: 'orange', selected:false} , {name: 'yellow', selected:false}, {name: 'green', selected:false}, {name: 'aqua', selected:false}, {name: 'blue', selected:false}, {name: 'violet', selected:false}, {name: 'fuchsia', selected:false}];
+
+  // function to load result from the api the function build the url depands on the filter
+  $scope.loadResults = function(){
+    urlNew = '/api/new';
+    urlTop = '/api/top';
+
+    if($scope.filterHues){
+      if($scope.filterHues[0] !=='all'){
+        $scope.urlFilter = $scope.filterHues.toString();
+        urlNew = urlNew + '?hueOption=' + $scope.urlFilter;
+        urlTop = urlTop + '?hueOption=' + $scope.urlFilter;
+      } else{
+          $scope.urlFilter = '';
+          for(var i=1; i<$scope.hues.length; i++){
+            $scope.urlFilter = $scope.urlFilter + $scope.hues[i].name + ',';
+          }
+          var urlStr = urlNew + '?hueOption=' + $scope.urlFilter;
+          //trim the last ","
+          urlNew = urlStr.substring(0, urlStr.length - 1);
+          urlTop = urlStr.substring(0, urlStr.length - 1);
+        }
+    }
+      
+
+    console.log("new : " + urlNew);
+    console.log("top : " + urlTop);
+
+    $http.get(urlNew).then(function (response){
+      $scope.dataNew = generateArrayOfPallets(response);
+    });
+
+   $http.get(urlTop).then(function (response){
+      $scope.dataTop = generateArrayOfPallets(response);
+    });    
+  };
+
+  //function build an array with  hues to filter
+ $scope.filter = function(){
+  $scope.filterHues = [];
+  for(var i=0; i<$scope.hues.length; i++){
+    if($scope.hues[i].selected){
+      $scope.filterHues.push($scope.hues[i].name);
+    }
+  } 
+  $scope.loadResults();
+ };
+
+ //excute the loadResult function to initiate the content
+ $scope.loadResults();
 }]);

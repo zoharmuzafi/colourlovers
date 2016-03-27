@@ -1,7 +1,8 @@
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    request = require('request');
+    request = require('request'),
+    url = require("url");
     hbs = require('hbs');
 
 // configure bodyParser (for receiving form data)
@@ -20,7 +21,14 @@ app.listen(process.env.PORT ||3000, function() {
 
 //call to the colourlover api - new
 app.get('/api/new', function (req, res) {
-  request('http://www.colourlovers.com/api/palettes/new?format=json&showPaletteWidths=1', function(error, response, body){
+  var parsedUrl = url.parse(req.url, true); 
+  var queryAsObject = parsedUrl.query;
+  var urlToSend = 'http://www.colourlovers.com/api/palettes/new?format=json&showPaletteWidths=1';
+  if(queryAsObject.hueOption){
+    urlToSend = urlToSend + '&hueOption=' + queryAsObject.hueOption;
+  }
+  console.log(urlToSend);
+  request(urlToSend, function(error, response, body){
   var dataNew = JSON.parse(body);
   res.json(dataNew); 
   });
@@ -28,7 +36,14 @@ app.get('/api/new', function (req, res) {
 
 //call to the colourlover api - top
 app.get('/api/top', function (req, res) {
-  request('http://www.colourlovers.com/api/palettes/top?format=json&showPaletteWidths=1', function(error, response, body){
+  var parsedUrl = url.parse(req.url, true); 
+  var queryAsObject = parsedUrl.query;
+  var urlToSend = 'http://www.colourlovers.com/api/palettes/top?format=json&showPaletteWidths=1';
+  if(queryAsObject.hueOption){
+    urlToSend = urlToSend + '&hueOption=' + queryAsObject.hueOption;
+  }
+  console.log(urlToSend);
+  request(urlToSend, function(error, response, body){
   var dataTop = JSON.parse(body);
   res.json(dataTop); 
   });
@@ -36,7 +51,6 @@ app.get('/api/top', function (req, res) {
 
 // catch all routes angular
 app.get('*', function (req, res) {
-	console.log("hi");
   res.render('index');
 });
 
