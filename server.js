@@ -18,7 +18,7 @@ app.listen(process.env.PORT ||3000, function() {
   console.log('server started');
 });
 
-
+//call to the colourlover api - new
 app.get('/api/new', function (req, res) {
   request('http://www.colourlovers.com/api/palettes/new?format=json&showPaletteWidths=1', function(error, response, body){
   var dataNew = JSON.parse(body);
@@ -26,6 +26,7 @@ app.get('/api/new', function (req, res) {
   });
 });
 
+//call to the colourlover api - top
 app.get('/api/top', function (req, res) {
   request('http://www.colourlovers.com/api/palettes/top?format=json&showPaletteWidths=1', function(error, response, body){
   var dataTop = JSON.parse(body);
@@ -33,7 +34,7 @@ app.get('/api/top', function (req, res) {
   });
 });
 
-
+// catch all routes angular
 app.get('*', function (req, res) {
 	console.log("hi");
   res.render('index');

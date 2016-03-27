@@ -1,21 +1,36 @@
-<h1>Newest</h1>
+<!-- homepage template -->
 
-<div class="row" ng-if="dataNew.data.length > 0">
-	<div class="col-md-3 col-sm-4" ng-repeat="palette in dataNew.data">
-		<div class="thumbnail">
-			<p>{{palette.userName}}</p>
-			<div class="paletteDiv" ng-repeat="color in palette.colors">
-				<div class="colorDiv" style="width: 20%; height:20px; background-color: #{{color}}"></div>
+<!-- new section -->
+<h1>Newest&nbsp&nbsp({{dataNew.length}})</h1><br><br>
+<div class="row" ng-if="dataNew.length > 0">
+	<div class="col-md-3 col-sm-4" ng-repeat="palette in dataNew">
+		<div class="thumbnail text-left">
+			<palette-info></palette-info>		
+			<div class="paletteDiv">
+				<div class="colorDiv" style="width: {{palette.colorWidths[$index]}}%; background-color: #{{color}}" ng-repeat="color in palette.colors track by $index">
+				</div>
 			</div>
+			<views-and-likes></views-and-likes>
+			<p></p>
+		</div>
+	</div>
+</div><br><br>
+
+
+<!-- top section -->
+<h1>Top&nbsp&nbsp({{dataTop.length}})</h1><br><br>
+<div class="row" ng-if="dataTop.length > 0">
+	<div class="col-md-3 col-sm-4" ng-repeat="palette in dataTop">
+		<div class="thumbnail text-left">
+			<palette-info></palette-info>	
+			<div class="paletteDiv">
+				<div class="colorDiv" style="width: {{palette.colorWidths[$index]}}%; background-color: #{{color}}" ng-repeat="color in palette.colors track by $index">
+				</div>
+			</div>
+			<views-and-likes></views-and-likes>
+			<p></p>
 		</div>
 	</div>
 </div>
 
-<!-- <div ng-repeat = "palette in dataNew.data">
-	<p>{{palette}}</p>
-</div>
 
-<h1>Top</h1>
-<div ng-repeat = "palette in dataTop.data">
-	<p>{{palette}}</p>
-</div> -->

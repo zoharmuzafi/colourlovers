@@ -1,10 +1,44 @@
 .paletteDiv{
-	width: 100%;
-	height: 20px;	
+	border: 1px solid black;
+	height: 200px;
+	margin-top: 7%;
+	margin-bottom: 2%;
 	padding:0;
-	
-
+	width: 100%;
 }
+
 .colorDiv{
 	display:inline-block;
+	height: 100%;
+	transition: height 1s;
+}
+
+.colorDiv:hover{
+	height: 110%;
+	width: 100%
+}
+
+.thumbnail{
+	height: 350px;
+	margin-top: 5% !important;
+	transition: width 1s, height 1s;
+	width: 90%;
+}
+
+.fa-heart{
+	color: red;
+	transition: font-size 1s;
+}
+
+.fa-heart:hover{
+	font-size: 20px;
+}
+
+.fa-eye{
+	color: blue;
+	transition: font-size 1s;
+}
+
+.fa-eye:hover{
+	font-size: 20px;
 }
